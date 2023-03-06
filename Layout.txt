@@ -1,0 +1,26 @@
+Ideas:
+    1 - Split background and webpage into two layers. The background layer would be a static image, and the webpage layer would be the dynamic content.
+
+    2 - Use a repeating pattern for the background image. Preferred colors are black, white, and gray. The pattern should be subtle, and not distracting. Probably geometric tiles?
+
+    3 - Overlay dynamic content and create content layout for name, hotlinks (github, resume,linkedIn), projects, small demo application like small tic-tac-toe board.
+
+    4 - Assure page is responsive for larger and smaller screens.
+
+    5 - Use card components for portfolio projects and for experience 
+        I - Display top three projects and use side arrow for loading more.
+            Each project must include:
+                   · Project Title
+                   · 1-2 sentence description describing the project (the problem and your solution)
+                   · Screenshot (optional but recommended)
+                   · VIEW LIVE and VIEW CODE buttons or external links so visitors can test it out (View live possibly inside application?)
+                   · Have a responsive, clean, simple layout
+        II - Display top three relavent positions. Breakdown skills from out of field jobs to how they apply in new field.
+    
+    6 - Write brief introduction of self to display at top of application page.
+
+
+    Required files?
+        Components: 
+            Card Component (For Projects and Experience)
+                Conditionally render information based on what it is being used for
