@@ -20,6 +20,7 @@ mongoose.set('strictQuery', true);
 mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false}, () => console.log( `Connected to MongoDB at ${URI}`));
 
 // Connect routes and setup protected routes with expressjwt
+app.use('/auth', require('./routes/auth'));
 app.use('/api', expressjwt({secret: process.env.SECRET, algorithms: ['HS256']}));
 app.use('/api/projects', require('./routes/projects'));
 app.use('/api/profile', require('./routes/profile'));

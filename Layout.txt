@@ -5,7 +5,7 @@ Ideas:
 
     3 - Overlay dynamic content and create content layout for name, hotlinks (github, resume,linkedIn), projects, small demo application like small tic-tac-toe board.
 
-    4 - Assure page is responsive for larger and smaller screens.
+    4 - Assure page is responsive for larger and smaller screens. Remove layered background below medium-sized screens and switch to stacking on small-sized screens.
 
     5 - Use card components for portfolio projects and for experience 
         I - Display top three projects and use side arrow for loading more.
