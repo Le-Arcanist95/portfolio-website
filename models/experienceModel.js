@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
     // Job Title
     // Start Date
     // End Date
+    // Current Job
     // Description
 const experienceSchema = new Schema({
     companyName: {
@@ -23,6 +24,10 @@ const experienceSchema = new Schema({
     },
     endDate: {
         type: Date,
+        required: true
+    },
+    currentJob: {
+        type: Boolean,
         required: true
     },
     description: {

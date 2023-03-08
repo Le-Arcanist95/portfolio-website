@@ -10,6 +10,8 @@ const Schema = mongoose.Schema;
     // Location
     // Skills
     // Links (Github, LinkedIn, Portfolio)
+    // Email
+    //
     // User (ref: User)
 const profileSchema = new Schema({
     firstName: {
@@ -17,6 +19,10 @@ const profileSchema = new Schema({
         required: true
     },
     lastName: {
+        type: String,
+        required: true
+    },
+    email: {
         type: String,
         required: true
     },
@@ -29,8 +35,22 @@ const profileSchema = new Schema({
         required: true
     },
     location: {
-        type: String,
-        required: true
+        city: {
+            type: String,
+            required: true
+        },
+        state: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            required: true
+        },
+        zip: {
+            type: String,
+            required: true
+        }
     },
     skills: {
         type: String,
@@ -49,6 +69,10 @@ const profileSchema = new Schema({
             type: String,
             required: true
         }
+    },
+    resume: {
+        type: String,
+        required: true
     },
     user: {
         type: Schema.Types.ObjectId,
