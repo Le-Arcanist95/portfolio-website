@@ -89,5 +89,3 @@ exports.deleteExperience = async (req, res, next) => {
         return next(err);
     }
 }
-
-// Path: routes/experienceRouter.js
