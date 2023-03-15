@@ -4,14 +4,14 @@ const { getAllProfiles, getOneProfile, postNewProfile, updateProfile, deleteProf
 const { validateProfile } = require('../middleware/validateProfile');
 
 // All routes are prepended with /profile
-profileRouter('/')
+profileRouter.route('/')
     .get(getAllProfiles)
-    .post(validateProfile, postNewProfile);
+    .post(postNewProfile);
 
 // All routes are prepended with /profile/:profileId
-profileRouter('/:profileId')
+profileRouter.route('/:profileId')
     .get(getOneProfile)
-    .put(validateProfile, updateProfile)
+    .put(updateProfile)
     .delete(deleteProfile);
 
 // Export

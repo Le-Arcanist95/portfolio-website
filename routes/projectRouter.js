@@ -4,14 +4,14 @@ const { getAllProjects, getOneProject, postNewProject, updateProject, deleteProj
 const { validateProject } = require('../middleware/validateProject');
 
 // All routes are prepended with /project
-projectRouter('/')
+projectRouter.route('/')
     .get(getAllProjects)
-    .post(validateProject, postNewProject);
+    .post(postNewProject);
 
 // All routes are prepended with /project/:projectId
-projectRouter('/:projectId')
+projectRouter.route('/:projectId')
     .get(getOneProject)
-    .put(validateProject, updateProject)
+    .put(updateProject)
     .delete(deleteProject);
 
 // Export

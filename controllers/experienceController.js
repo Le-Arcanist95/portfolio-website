@@ -1,5 +1,5 @@
-const Experience = require('../models/experience');
-const User = require('../models/user');
+const Experience = require('../models/experienceModel');
+const User = require('../models/userModel');
 const {validationResult} = require('express-validator');
 
 // GET ALL EXPERIENCES

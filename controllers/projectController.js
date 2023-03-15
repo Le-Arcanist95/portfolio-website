@@ -31,11 +31,6 @@ exports.getOneProject = async (req, res, next) => {
 // POST NEW PROJECT
 exports.postNewProject = async (req, res, next) => {
     try {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            res.status(400);
-            return next(new Error(errors.array().map(err => err.msg).join(', ')));
-        }
         const user = await User.findById(req.user._id);
         const newProject = new Project(req.body);
         newProject.user = user;

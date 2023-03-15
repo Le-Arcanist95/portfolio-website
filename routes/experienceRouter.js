@@ -4,15 +4,15 @@ const { getAllExperiences, getOneExperience, postNewExperience, updateExperience
 const { validateExperience } = require('../middleware/validateExperience');
 
 // All routes are prepended with /experience
-experienceRouter('/')
+experienceRouter.route('/')
     .get(getAllExperiences)
-    .post(validateExperience, postNewExperience);
+    .post(postNewExperience);
 
 
 // All routes are prepended with /experience/:experienceId
-experienceRouter('/:experienceId')
+experienceRouter.route('/:experienceId')
     .get(getOneExperience)
-    .put(validateExperience, updateExperience)
+    .put(updateExperience)
     .delete(deleteExperience);
 
 // Export
