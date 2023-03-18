@@ -6,7 +6,7 @@ const cors = require('cors');
 const { expressjwt } = require('express-jwt');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 5000;
-const URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/your-database-name';
+const URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/portfolio_website_database';
 const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 const app = express();
 
