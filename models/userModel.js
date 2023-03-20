@@ -25,15 +25,24 @@ const userSchema = new Schema({
     },
     profile: {
         type: Schema.Types.ObjectId,
-        ref: 'Profile'
+        ref: 'Profile',
+        default: null
     },
     experience: {
-        type: Schema.Types.ObjectId,
-        ref: 'Experience'
+        type: Array,
+        prefixItems: {
+            type: Schema.Types.ObjectId,
+            ref: 'Experience'
+        },
+        default: []
     },
     projects: {
-        type: Schema.Types.ObjectId,
-        ref: 'Project'
+        type: Array,
+        prefixItems: {
+            type: Schema.Types.ObjectId,
+            ref: 'Project'
+        },
+        default: []
     }
 }, {timestamps: true});
 

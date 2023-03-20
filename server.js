@@ -13,6 +13,7 @@ const app = express();
 // Setup middleware (morgan, express.json, cors)
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: corsOrigin, credentials: true}));
 
 // Connect to Database

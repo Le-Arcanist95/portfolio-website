@@ -26,9 +26,9 @@ const profileSchema = new Schema({
         type: String,
         required: true
     },
-    profilePicture: {
-        type: String,
-        required: true
+    profileImg: {
+        type: Schema.Types.ObjectId,
+        ref: 'Image'
     },
     bio: {
         type: String,
@@ -42,18 +42,10 @@ const profileSchema = new Schema({
         state: {
             type: String,
             required: true
-        },
-        country: {
-            type: String,
-            required: true
-        },
-        zip: {
-            type: String,
-            required: true
         }
     },
     skills: {
-        type: String,
+        type: [String],
         required: true
     },
     links: {
@@ -68,11 +60,11 @@ const profileSchema = new Schema({
         portfolio: {
             type: String,
             required: true
+        },
+        resume: {
+            type: String,
+            required: true
         }
-    },
-    resume: {
-        type: String,
-        required: true
     },
     user: {
         type: Schema.Types.ObjectId,

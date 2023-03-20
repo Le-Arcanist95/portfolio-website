@@ -1,7 +1,6 @@
 const express = require('express');
 const projectRouter = express.Router();
 const { getAllProjects, getOneProject, postNewProject, updateProject, deleteProject } = require('../controllers/projectController');
-const { validateProject } = require('../middleware/validateProject');
 
 // All routes are prepended with /project
 projectRouter.route('/')
