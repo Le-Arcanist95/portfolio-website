@@ -36,11 +36,21 @@ exports.postNewExperience = async (req, res, next) => {
         return next(new Error(errors.array().map(err => err.msg).join(', ')));
     }
     try {
-        const user = await User.findById(req.user._id);
+        const user = await User.findById(req.auth._id);
+        const dateObject = {
+            startDate: new Date(req.body.startDate),
+            endDate: new Date(req.body.endDate)
+        }
+        if (dateObject.startDate > dateObject.endDate) {
+            res.status(422);
+            return next(new Error('Start date must be before end date'));
+        }
+        req.body.startDate = dateObject.startDate;
+        req.body.endDate = dateObject.endDate;
+        req.body.user = user._id;
         const newExperience = new Experience(req.body);
-        newExperience.user = user;
         await newExperience.save();
-        user.experiences.push(newExperience);
+        user.experience.push(newExperience);
         await user.save();
         res.status(201).send(newExperience);
     } catch (err) {

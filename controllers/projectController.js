@@ -31,9 +31,9 @@ exports.getOneProject = async (req, res, next) => {
 // POST NEW PROJECT
 exports.postNewProject = async (req, res, next) => {
     try {
-        const user = await User.findById(req.user._id);
+        const user = await User.findById(req.auth._id);
         const newProject = new Project(req.body);
-        newProject.user = user;
+        newProject.user = user._id;
         await newProject.save();
         user.projects.push(newProject);
         await user.save();
@@ -52,7 +52,7 @@ exports.updateProject = async (req, res, next) => {
             res.status(400);
             return next(new Error(errors.array().map(err => err.msg).join(', ')));
         }
-        const user = await User.findById(req.user._id);
+        const user = await User.findById(req.auth._id);
         const project = await Project.findById(req.params.projectId);
         if (!project) {
             res.status(404);
@@ -62,13 +62,8 @@ exports.updateProject = async (req, res, next) => {
             res.status(401);
             return next(new Error('Unauthorized'));
         }
-        await Project.findByIdAndUpdate(req.params.projectId, req.body, {new: true}, (err, updatedProject) => {
-            if (err) {
-                res.status(500);
-                return next(err);
-            }
-            res.status(201).send(updatedProject);
-        });
+        await Project.findByIdAndUpdate(req.params.projectId, req.body, { new: true });
+        res.status(200).send(project);
     } catch (err) {
         res.status(500);
         return next(err);

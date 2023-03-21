@@ -10,23 +10,23 @@ const Schema = mongoose.Schema;
     // Project Link
     // User (ref: User)
 const projectSchema = new Schema({
-    projectName: {
+    name: {
         type: String,
         required: true
     },
-    projectDescription: {
+    description: {
         type: String,
         required: true
     },
-    projectSkills: {
-        type: [String],
-        required: true
-    },
-    projectImage: {
+    image: {
         type: String,
         required: true
     },
-    projectLink: {
+    deploymentLink: {
+        type: String,
+        required: true
+    },
+    githubLink: {
         type: String,
         required: true
     },
