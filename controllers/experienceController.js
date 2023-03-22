@@ -68,7 +68,7 @@ exports.updateExperience = async (req, res, next) => {
     }
     try {
         const updatedExperience = await Experience.findOneAndUpdate(
-            {_id: req.params.experienceId, user: req.user._id},
+            {_id: req.params.experienceId, user: req.auth._id},
             req.body,
             {new: true}
         );
