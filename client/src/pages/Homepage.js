@@ -3,6 +3,9 @@ import React, { useContext } from 'react';
 import ThemeContext from '../context/ThemeProvider';
 import DataContext from '../context/DataProvider';
 
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const Homepage = () => {
     const { experience, profile, projects } = useContext(DataContext);
     const { theme } = useContext(ThemeContext);
@@ -11,6 +14,7 @@ const Homepage = () => {
 
     return (
         <div id='backgroundLayer'>
+            <Header/>
             <div id='webpageLayer'>
                 <section id='intro'>
                     <h1> This is intro section filler </h1>
@@ -28,6 +32,7 @@ const Homepage = () => {
                     <h3> This is temporary </h3>
                 </section>
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -56,3 +56,42 @@ exports.login = async (req, res, next) => {
         return next(err)
     }
 }
+
+exports.changePassword = async (req, res, next) => {
+    const { password, newPassword } = req.body;
+    const foundUser = User.findOne({ username: req.auth.username.toLowerCase() })
+    if(!foundUser) {
+        res.status(403)
+        return next(new Error('Username or password is incorrect.'))
+    }
+    if(!password, !newPassword) {
+        res.status(403)
+        return next(new Error('Please fill out all of the fields.'))
+    }
+    foundUser.comparePassword(password, (err, isMatch) => {
+        if(err) {
+            res.status(403)
+            return next(new Error('Username or password is incorrect.'))
+        }
+        if(isMatch) {
+            foundUser.password = newPassword;
+            foundUser.save();
+            return res.status(200).send(foundUser.withoutPassword())
+        }
+    })
+}
+
+exports.updateUser = async (req, res, next) => {
+    if(req.body.includes('password')) {
+        res.status(403)
+        return next(new Error('You cannot update your password here.'))
+    }
+    const foundUser = User.findOne({ username: req.auth.username.toLowerCase() })
+    if(!foundUser) {
+        res.status(403)
+        return next(new Error('Username or password is incorrect.'))
+    }
+    foundUser.update(req.body);
+    foundUser.save();
+    return res.status(200).send(foundUser.withoutPassword())
+}

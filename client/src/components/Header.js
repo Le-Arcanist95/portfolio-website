@@ -1,10 +1,10 @@
 // Use tailwindcss for styling
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from './Navbar';
-import { useTheme } from '../ContentProvider';
+import themeContext from '../context/ThemeProvider';
 
 const Header = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, toggleTheme } = useContext(themeContext);
     const toggleValue = theme === 'light' ? false : true;
 
     return (

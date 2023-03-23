@@ -1,7 +1,7 @@
 // Import requires (useContext, createContext, useState, useEffect)
 import { createContext, useState, useEffect } from 'react';
 // Import requires (axios)
-import axios from 'axios';
+import { serverClient as axios } from '../hooks/useAxios';
 
 // Create context
 const DataContext = createContext();
