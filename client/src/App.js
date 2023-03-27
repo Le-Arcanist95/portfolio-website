@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Context
-import { AuthContext } from './context/AuthProvider';
+import AuthContext from './context/AuthProvider';
 
 // Components
 import RouteProtection from './components/RouteProtection';
@@ -16,7 +16,7 @@ const App = () => {
     const { token } = useContext(AuthContext);
     return (
         <Routes>
-            <Route path="/" element={ token ? <Navigate to="/home" /> : <Navigate to="/auth/login" />} />
+            <Route exact path="/" element={ token ? <Navigate to="/home" /> : <Navigate to="/auth/login" />} />
             <Route path="/auth/login" element={<Auth />} />
             <Route path="/home" element={
                 <RouteProtection>

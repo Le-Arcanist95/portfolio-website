@@ -1,8 +1,6 @@
 const Profile = require('../models/profileModel.js');
 const User = require('../models/userModel.js');
 const { validationResult } = require('express-validator');
-const fs = require('fs');
-const upload = require('../middleware/multerMiddleware.js');
 
 // GET ALL PROFILES
 exports.getAllProfiles = async (req, res, next) => {

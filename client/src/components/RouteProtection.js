@@ -5,8 +5,10 @@ export default function ProtectedRoute({ children }) {
     const token = localStorage.getItem("token");
     
     return token ? (
-        children
-    ) : (
-        <Navigate to="/auth/login" />
+            console.log("You are logged in"),
+            children
+        ) : (
+            console.log("You are not logged in"),
+            <Navigate to="/auth/login" />
     );
 };

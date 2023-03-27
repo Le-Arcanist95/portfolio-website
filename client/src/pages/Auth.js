@@ -1,19 +1,17 @@
-import React from 'react';
-import { serverClient as axios } from '../hooks/useAxios';
+import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import AuthContext from '../context/AuthProvider';
 
-export const Login = () => {
+
+const Authorization = () => {
+    const { login, redirect } = useContext(AuthContext);
+
     return (
-        <div>
-            <button onClick={
-                () => {
-                    axios.post('/auth/login', {
-                        username: 'levi_arcane',
-                        password: 'tS6tM7atS11'
-                        })
-                        .then(res => console.log(res.data))
-                        .catch(err => console.log(err.response.data.errMsg));
-                }
-            }> Login </button>
+        <div className="flex items-center justify-center h-screen">
+            {redirect ? <Navigate to="/home" /> : null}
+            <button onClick={() => login({ username: "levi_arcane", password: "tS6tM7atS11"})}> Enter </button>
         </div>
     );
 }
+
+export default Authorization;

@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react';
+import { Navigate } from 'react-router-dom';
 import { serverClient as axios } from '../hooks/useAxios';
 
 const AuthContext = createContext();
@@ -6,26 +7,21 @@ const AuthContext = createContext();
 export const AuthProvider = (props) => {
     const initState = {
         user: JSON.parse(localStorage.getItem('user')) || {},
-        token: localStorage.getItem('token') || '',
-        errMsg: ''
+        token: localStorage.getItem('token') || ''
     };
     const [authState, setAuthState] = useState(initState);
+    const [redirect, setRedirect] = useState(false);
+    const [errMsg, setErrMsg] = useState('');
 
     const handleAuthErr = (err) => {
-        setAuthState(prevState => ({
-            ...prevState,
-            errMsg: err.response.data.errMsg
-        }));
+        setErrMsg(err.response.data.errMsg)
         setTimeout(() => {
-            setAuthState(prevState => ({
-                ...prevState,
-                errMsg: ''
-            }));
+            setErrMsg('');
         }, 10000);
     };
 
     const register = (credentials) => {
-        axios.post('/auth/signup', credentials)
+        axios.post('/auth/login', credentials)
             .then(res => {
                 const { user, token } = res.data;
                 localStorage.setItem('user', JSON.stringify(user));
@@ -35,8 +31,9 @@ export const AuthProvider = (props) => {
                     user,
                     token
                 }));
+                setRedirect(true);
             })
-            .catch(handleAuthErr);
+            .catch(err => handleAuthErr(err));
     }
 
     const login = (credentials) => {
@@ -50,8 +47,9 @@ export const AuthProvider = (props) => {
                     user,
                     token
                 }));
+                setRedirect(true);
             })
-            .catch(handleAuthErr);
+            .catch(err => handleAuthErr(err));
     }
 
     const logout = () => {
@@ -68,6 +66,8 @@ export const AuthProvider = (props) => {
         <AuthContext.Provider
             value={{
                 ...authState,
+                redirect,
+                errMsg,
                 register,
                 login,
                 logout
@@ -77,3 +77,5 @@ export const AuthProvider = (props) => {
         </AuthContext.Provider>
     );
 };
+
+export default AuthContext;
