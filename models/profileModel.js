@@ -5,13 +5,11 @@ const Schema = mongoose.Schema;
 // Define Schema - Must include:
     // First Name
     // Last Name
-    // Profile Picture
     // Bio
     // Location
     // Skills
     // Links (Github, LinkedIn, Portfolio)
     // Email
-    //
     // User (ref: User)
 const profileSchema = new Schema({
     firstName: {
@@ -25,10 +23,6 @@ const profileSchema = new Schema({
     email: {
         type: String,
         required: true
-    },
-    profileImg: {
-        type: Schema.Types.ObjectId,
-        ref: 'Image'
     },
     bio: {
         type: String,

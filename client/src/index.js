@@ -14,6 +14,12 @@ import App from './App';
 // CSS Styling
 import './index.css';
 
+// Disable React DevTools
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+if (process.env.NODE_ENV === 'production') {
+    disableReactDevTools();
+}
+
 // Root
 const root = createRoot(document.getElementById('root'));
 

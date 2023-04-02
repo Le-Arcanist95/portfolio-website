@@ -21,25 +21,5 @@ profileRouter.route('/:profileId')
     .put(updateProfile)
     .delete(deleteProfile);
 
-// All routes are prepended with /profile/:profileId/image
-profileRouter.route('/:profileId/image')
-    .post(upload.single('profileImg'), (req, res) => {
-        const { originalname, mimetype, buffer } = req.file;
-        const image = new Image({
-            name: originalname,
-            data: buffer.toString('base64'),
-            contentType: mimetype
-        });
-        image.save()
-        const profileId = req.params.profileId;
-        Profile.findByIdAndUpdate(profileId, { profileImg: image._id })
-            .then((profile) => {
-                res.status(200).json({profile, image});
-            })
-            .catch((err) => {
-                res.status(500).json(err);
-            });
-    });
-
 // Export
 module.exports = profileRouter;
