@@ -13,13 +13,15 @@ const About = () => {
                 {/* <img src={`data:image/png;base64,${profileImg}`} alt='profile' className=''/> */}
             </div>
             <p className='text-lg p-4'> {profile.bio} </p>
-            <h3 className='text-2xl text-center'> Skills </h3>
-            <hr className='w-1/4 h-1 mx-auto my-3 bg-dark border-0 rounded dark:bg-light'/>
-            <ul className='flex flex-wrap justify-center'>
-                {profile.skills.map(skill => (
-                    <li key={skill} className='mx-2 my-1 p-1 bg-light dark:bg-dark rounded'> {skill} </li>
-                ))}
-            </ul>
+            <div id='skills'>
+                <h3 className='text-2xl text-center'> Skills </h3>
+                <hr className='w-1/4 h-1 mx-auto my-3 bg-dark border-0 rounded dark:bg-light'/>
+                <ul className='flex flex-wrap justify-center'>
+                    {profile.skills.map(skill => (
+                        <li key={skill} className='mx-2 my-1 p-1 bg-light dark:bg-dark rounded'> {skill} </li>
+                    ))}
+                </ul>
+            </div>
 
         </section>
     );

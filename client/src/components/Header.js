@@ -15,7 +15,7 @@ const Header = () => {
     };
 
     return (
-        <header>
+        <header className='sticky top-0 z-30 w-full px-2 py-4 sm:px-4 shadow-xl'>
             <nav className='flex justify-between items-center h-16 bg-white dark:bg-slate-700 text-black dark:text-white relative shadow-sm font-mono' role='navigation'>
                 <div className='px-4 cursor-pointer'>
                     <h2 className='text-xl'> Dev.Portfolio </h2>
@@ -30,7 +30,6 @@ const Header = () => {
                     <a href='#about' className={navLinkStyle}> About </a>
                     <a href='#skills' className={navLinkStyle}> Skills </a>
                     <a href='#projects' className={navLinkStyle}> Projects </a>
-                    <a href='#experience' className={navLinkStyle}> Experience </a>
                 </div>
                 <ThemeToggle />
                 {/* Mobile menu */}

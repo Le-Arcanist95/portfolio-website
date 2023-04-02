@@ -8,12 +8,20 @@ import Header from '../components/Header';
 import Intro from '../components/Intro';
 import About from '../components/About';
 import ProjectList from '../components/ProjectList';
+import Contact from "../components/Contact";
 import Footer from '../components/Footer';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+library.add(fab, fas);
 
 const Homepage = () => {
     // Destructure theme from ThemeContext
     const { theme } = useContext(ThemeContext);
     const data = useContext(DataContext);
+    if (data.isLoaded) console.log(data.experience);
 
     // Set darkMode to Boolean value
     const darkMode = theme === 'dark' ? true : false;
@@ -29,15 +37,7 @@ const Homepage = () => {
                             <Intro />
                             <About />
                             <ProjectList />
-                            <section id='projects'>
-                                <h3> This is projects section filler </h3>
-                            </section>
-                            <section id='experience'>
-                                <h3> This is temporary </h3>
-                            </section>
-                            <section id='contact'>
-                                <h3> This is temporary </h3>
-                            </section>
+                            <Contact />
                         </div>
                         <Footer/>
                     </div>
