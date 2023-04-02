@@ -38,7 +38,6 @@ const Header = () => {
                     <a href='#about' className={navLinkStyle} onClick={handleNavigate}> About </a>
                     <a href='#skills' className={navLinkStyle} onClick={handleNavigate}> Skills </a>
                     <a href='#projects' className={navLinkStyle} onClick={handleNavigate}> Projects </a>
-                    <a href='#experience' className={navLinkStyle} onClick={handleNavigate}> Experience </a>
                 </div>
             </nav>
         </header>
