@@ -6,7 +6,7 @@ const cors = require('cors');
 const { expressjwt } = require('express-jwt');
 const morgan = require('morgan');
 const PORT = process.env.PORT || 5000;
-const URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/portfolio_website_database';
+const URI = process.env.MONGODB_URI;
 const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 const app = express();
 
@@ -36,7 +36,11 @@ app.use((err, req, res, next) => {
     return res.send({errMsg: err.message});
 });
 
-// PORT -- Listen
-mongoose.connection.once('open', () => {
-    app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`));
+// Connect to server and database and listen for requests on PORT
+const dbConnection = mongoose.connection;
+dbConnection.on('error', (err) => console.log(`Connection Error: ${err}`));
+dbConnection.on('disconnected', () => console.log('Mongoose is disconnected'));
+dbConnection.once('open', () => {
+    console.log('Mongoose is connected');
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 });
