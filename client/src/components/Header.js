@@ -15,7 +15,7 @@ const Header = () => {
     };
 
     return (
-        <header className='sticky top-0 z-30 w-full px-2 py-4 sm:px-4 shadow-xl'>
+        <header className='sticky top-0 z-30 w-full px-2 pb-4 sm:px-4 shadow-xl'>
             <nav className='flex justify-between items-center h-16 bg-white dark:bg-slate-700 text-black dark:text-white relative shadow-sm font-mono' role='navigation'>
                 <div className='px-4 cursor-pointer'>
                     <h2 className='text-xl'> Dev.Portfolio </h2>
@@ -28,7 +28,6 @@ const Header = () => {
                 <div className='pr-8 md:flex hidden'>
                     <a href='#intro' className={navLinkStyle}> Intro </a>
                     <a href='#about' className={navLinkStyle}> About </a>
-                    <a href='#skills' className={navLinkStyle}> Skills </a>
                     <a href='#projects' className={navLinkStyle}> Projects </a>
                 </div>
                 <ThemeToggle />
@@ -36,7 +35,6 @@ const Header = () => {
                 <div className='absolute top-16 right-0 bg-white dark:bg-slate-700 w-full z-50' style={{ display: isVisible ? 'block' : 'none' }}>
                     <a href='#intro' className={navLinkStyle} onClick={handleNavigate}> Intro </a>
                     <a href='#about' className={navLinkStyle} onClick={handleNavigate}> About </a>
-                    <a href='#skills' className={navLinkStyle} onClick={handleNavigate}> Skills </a>
                     <a href='#projects' className={navLinkStyle} onClick={handleNavigate}> Projects </a>
                 </div>
             </nav>
