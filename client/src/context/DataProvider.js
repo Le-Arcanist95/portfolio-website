@@ -38,8 +38,8 @@ export const DataProvider = (props) => {
     }, []);
 
     const getProfile = useCallback(() => {
-        axios.get(`/api/profile`)
-            .then(res => console.log(res.data))
+        axios.get(`/api/profile/${user.profile}`)
+            .then(res => setProfile(res.data))
             .catch(err => console.log(err.response.data.errMsg));
     }, [user.profile]);
 

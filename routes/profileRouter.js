@@ -1,13 +1,6 @@
 const express = require('express');
 const profileRouter = express.Router();
 const { getAllProfiles, getOneProfile, postNewProfile, updateProfile, deleteProfile } = require('../controllers/profileController');
-const Image = require('../models/imageModel');
-const Profile = require('../models/profileModel');
-const fs = require('fs');
-const path = require('path');
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({storage });
 
 
 // All routes are prepended with /profile
